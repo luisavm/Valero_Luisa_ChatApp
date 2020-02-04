@@ -5,7 +5,7 @@
 export default {
     props: ['msg'],
     template: `
-        <p class="new-message": class="{ 'my-message : matchedID }">
+        <p class="new-message" :class="{ 'my-message' : matchedID }">
             <span>{{msg.message.name}} says:</span>
             {{msg.message.content}}
         </p>
@@ -14,7 +14,7 @@ export default {
     data: function() {
         // nothing here yet
         return {
-            macthedID: this.$parent.socketID == this.msg.id
+            matchedID: this.$parent.socketID == this.msg.id
          }
     }
 }
