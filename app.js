@@ -28,24 +28,25 @@ io.attach(server);
 // direct connection between your computer and your server
 io.on('connection', function(socket) {
     console.log('user connected');
-    socket.emit('connected', {sID: `${socket.id}`, message: 'new connection'})
+    // socket object = sID = could be anything
+    socket.emit('connected', {sID: `${socket.id}`, message: 'new connection'});
 
-    socket.on['chat_message' , function'(msg) {
-            // listen for an incoming message from a user (socket refers to an individual user))
-        // msg is the incoming message from that user
+    // listen for incoming message from a user (socket referes to an individual user)
+    // msg = incoming msg from that user
+    socket.on('chat_message', function(msg) {
         console.log(msg);
-    
-        // when we get a new message, send it to everyone so they see it
-        // io is the swicthboard operator, making sure everyone who's connect
-        // gets the message 
-        io.emit('new_message, { id: socket.id, message: msg}')
+        // when we get msg, send it to everyone
+        // io checks who is connected
+        // gets the messages
+
+        io.emit('new_message', { id: socket.id, message: msg });
     })
 
     // listen for a disconnect event - like hanging up a phone
     socket.on('disconnect', function() {
         console.log('a user disconnected');
-
-        message = `${socket.id} has left the chat!`;
+        // tracking the id tells us who left
+        message = `${socket.id} has left the chat`;
         io.emit('user_disconnect', message);
     })
 })
