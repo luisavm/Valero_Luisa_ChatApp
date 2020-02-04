@@ -3,4 +3,19 @@
 
 export default {
 
+    props: ['msg'],
+
+    
+    template:`
+    // <p class="new-message">
+    //     <span>{{msg.message.name}} say: </span>
+    //     {{msg.messahe.content}}
+    </p>
+    `,
+
+   data: function() {
+    //    nothing here yet, but there will be
+     return {message: "howdy do"}
+   }
+
 }
